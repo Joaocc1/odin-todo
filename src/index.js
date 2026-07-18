@@ -1,9 +1,24 @@
 import { format } from "date-fns"
 
 // create an array that will be the default project for todos
-const mainProject = []
+const projects = [
+  {
+    "name": "default",
+    "todos": []
+  }
+]
+
 
 // create a class that creates more projects
+class Project {
+
+  constructor(name) {
+    this.name = name
+    this.todos = []
+  }
+}
+
+// create a class that creates more todos
 class Todo {
 
   constructor(title, description, date, label, priority) {
@@ -18,10 +33,23 @@ class Todo {
   }
 }
 
-// testing generating todos using class
-const todo = new Todo("title test", "this is what I have to do", "2026, 01, 08", "dev", 1)
-mainProject.push(todo)
+// create functions that will create todos and projects and assign
 
-console.log(mainProject)
+function addProject(name) {
+  projects.push(new Project(name.toLowerCase()))
+}
 
-// create a class that creates todos
+function addTodo(title, description, date, label, priority, projectName) {
+
+  projects.find((project) => project.name === projectName).todos.push(new Todo(title, description, date, label, priority))
+}
+
+
+// ======== Testing =================
+
+addProject("The Odin Project")
+
+addTodo("Finish project", "Todo app project part of the odin project curriculum", "2026, 01, 08", "dev", 1, "the odin project")
+
+
+console.log(projects)
