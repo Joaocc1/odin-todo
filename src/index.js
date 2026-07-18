@@ -76,7 +76,9 @@ function addTodo(title, description, date, label, priority, projectId) {
 }
 
 // function to delete projects
-
+function removeProject(projectId) {
+  return projects.splice(projects.indexOf(findProject(projectId)), 1)
+}
 
 // functions to find specific todos and projects
 function findProject(projectId) {
@@ -92,7 +94,11 @@ function findTodo(todoId, projectId) {
 
 addProject("The Odin Project")
 
-addTodo("Finish project", "Todo app project part of the odin project curriculum", "2026, 08, 01", "dev", 1, "the odin project")
+addTodo("Finish project", "Todo app project part of the odin project curriculum", "2026, 08, 01", "dev", 1, 1)
+
+removeProject(1)
+
+console.log(projects)
 
 
 
