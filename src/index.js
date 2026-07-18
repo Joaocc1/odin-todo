@@ -53,3 +53,12 @@ addTodo("Finish project", "Todo app project part of the odin project curriculum"
 
 
 console.log(projects)
+
+// ++++++++++ Next steps +++++++++++++
+//
+// 1. add a way to edit and delete todos and projects
+// 2. refactor to modules
+// 3. implement ui
+// 4. implement local storage
+//
+// (optional) implement feature that gives option to recurring todos
