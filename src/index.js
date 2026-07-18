@@ -28,7 +28,7 @@ class Todo {
     this.label = label
     this.priority = priority
     this.id = crypto.randomUUID()
-
+    this.completed = false
 
   }
 }
@@ -49,7 +49,7 @@ function addTodo(title, description, date, label, priority, projectName) {
 
 addProject("The Odin Project")
 
-addTodo("Finish project", "Todo app project part of the odin project curriculum", "2026, 01, 08", "dev", 1, "the odin project")
+addTodo("Finish project", "Todo app project part of the odin project curriculum", "2026, 08, 01", "dev", 1, "the odin project")
 
 
 console.log(projects)
