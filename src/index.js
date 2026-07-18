@@ -21,7 +21,7 @@ class Project {
     this.name = newName
   }
 
-  deleteTodo(todoId) {
+  removeTodo(todoId) {
    this.todos.splice(this.todos.indexOf((this.todos.find((todo) => todo.id === todoId))) , 1)
   }
 }
@@ -70,7 +70,11 @@ function addTodo(title, description, date, label, priority, projectName) {
   projects.find((project) => project.name === projectName).todos.push(new Todo(title, description, date, label, priority))
 }
 
+// function to delete projects
+
+
 // functions to find specific todos and projects
+// !!!!! Refactor these to use id !!!!
 function findProject(projectName) {
   return projects.find((project) => project.name === projectName)
 }
@@ -94,13 +98,14 @@ findTodo("Finish project", "the odin project").editTitle("Finish this odin proje
 
 findTodo("Finish this odin project", "the odin project").toggleCompleted()
 
-findProject("the odin project").deleteTodo(findTodo("Finish this odin project", "the odin project").id)
+findProject("the odin project").removeTodo(findTodo("Finish this odin project", "the odin project").id)
 
 console.log(projects)
 
 // ++++++++++ Next steps +++++++++++++
 //
 // 1. add a way to edit and delete todos and projects
+// 1.1 Refactor find functions to use id; for testing purposes only, hard code those ids temporarily instead of random generation
 // 2. refactor to modules
 // 3. implement ui
 // 4. implement local storage
