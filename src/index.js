@@ -1,12 +1,7 @@
 import { format } from "date-fns"
 
 // create an array that will be the default project for todos
-const projects = [
-  {
-    "name": "default",
-    "todos": []
-  }
-]
+const projects = []
 
 
 // create a class that creates more projects
@@ -15,9 +10,7 @@ class Project {
   constructor(name) {
     this.name = name
     this.todos = []
-    // !! After testing in the console uncomment the line below and delete the next one
-    // this.id = crypto.randomUUID()
-    this.id = 1
+    this.id = crypto.randomUUID()
   }
 
   editName(newName) {
@@ -32,15 +25,15 @@ class Project {
 // create a class that creates more todos
 class Todo {
 
-  constructor(title, description, date, label, priority) {
+  constructor(title, description, date, label, priority, projectName, projectId) {
     this.title = title;
     this.description = description
     this.date = format(new Date(date), "dd/MM/yyyy")
     this.label = label
     this.priority = priority
-    // !! After testing in the console uncomment the line below and delete the next one
-    // this.id = crypto.randomUUID()
-    this.id = 1
+    this.id = crypto.randomUUID()
+    this.project = projectName
+    this.projectId = projectId
     this.completed = false
   }
 
@@ -64,7 +57,11 @@ class Todo {
   }
 }
 
-// create functions that will create todos and projects and assign
+
+// Generate the default project folder
+addProject("default")
+
+// create todos and projects
 
 function addProject(name) {
   projects.push(new Project(name.toLowerCase()))
@@ -72,15 +69,21 @@ function addProject(name) {
 
 function addTodo(title, description, date, label, priority, projectId) {
 
-  projects.find((project) => project.id === projectId).todos.push(new Todo(title, description, date, label, priority))
+  const projectName = findProject(projectId).name
+
+  projects.find((project) => project.id === projectId).todos.push(new Todo(title, description, date, label, priority, projectName, projectId))
 }
 
-// function to delete projects
+// delete projects and todos
 function removeProject(projectId) {
   return projects.splice(projects.indexOf(findProject(projectId)), 1)
 }
 
-// functions to find specific todos and projects
+function removeTodo(projectId, todoId) {
+  return findTodo(todoId, projectId).removeTodo(todoId)
+}
+
+// find specific todos and projects
 function findProject(projectId) {
   return projects.find((project) => project.id === projectId)
 }
@@ -89,16 +92,20 @@ function findTodo(todoId, projectId) {
   return findProject(projectId).todos.find((todo) => todo.id === todoId)
 }
 
+// loop through all the todos and return them
+
+function getTodos() {
+  const allTodos = []
+  projects.map((project) => {
+    project.todos.forEach((todo) => allTodos.push(todo))
+  })
+  return allTodos
+}
+
 
 // ======== Testing =================
 
-addProject("The Odin Project")
 
-addTodo("Finish project", "Todo app project part of the odin project curriculum", "2026, 08, 01", "dev", 1, 1)
-
-removeProject(1)
-
-console.log(projects)
 
 
 
