@@ -25,14 +25,14 @@ class Project {
 // create a class that creates more todos
 class Todo {
 
-  constructor(title, description, date, label, priority, projectName, projectId) {
+  constructor(title, description, date, label, priority, projectId) {
     this.title = title;
     this.description = description
     this.date = format(new Date(date), "dd/MM/yyyy")
     this.label = label
     this.priority = priority
     this.id = crypto.randomUUID()
-    this.project = projectName
+    this.project = findProject(projectId.name)
     this.projectId = projectId
     this.completed = false
   }
@@ -69,9 +69,7 @@ function addProject(name) {
 
 function addTodo(title, description, date, label, priority, projectId) {
 
-  const projectName = findProject(projectId).name
-
-  projects.find((project) => project.id === projectId).todos.push(new Todo(title, description, date, label, priority, projectName, projectId))
+  projects.find((project) => project.id === projectId).todos.push(new Todo(title, description, date, label, priority, projectId))
 }
 
 // delete projects and todos
@@ -105,7 +103,6 @@ function getTodos() {
 
 // ======== Testing =================
 
-// testing git push
 
 
 
