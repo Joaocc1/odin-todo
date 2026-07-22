@@ -10,7 +10,6 @@ export default class Todo {
     this.label = label
     this.priority = priority
     this.id = crypto.randomUUID()
-    this.project = findProject(projectId.name)
     this.projectId = projectId
     this.completed = false
   }

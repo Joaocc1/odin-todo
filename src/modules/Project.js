@@ -1,3 +1,5 @@
+import Todo from "./Todo.js"
+
 // create a class that creates more projects
 export default class Project {
 
@@ -9,6 +11,14 @@ export default class Project {
 
   editName(newName) {
     this.name = newName
+  }
+
+  addTodo(title, description, date, label, priority) {
+   this.todos.push(new Todo(title, description,date, label, priority, this.id))
+  }
+
+  findTodo(todoId) {
+    this.todos.find((todo) => todo.id === todoId)
   }
 
   removeTodo(todoId) {
