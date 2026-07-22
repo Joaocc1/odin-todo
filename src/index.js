@@ -1,59 +1,6 @@
-import { format } from "date-fns"
+import App from "./App.js"
 
-
-// create a class that creates more projects
-class Project {
-
-  constructor(name) {
-    this.name = name
-    this.todos = []
-    this.id = crypto.randomUUID()
-  }
-
-  editName(newName) {
-    this.name = newName
-  }
-
-  removeTodo(todoId) {
-   this.todos.splice(this.todos.indexOf((this.todos.find((todo) => todo.id === todoId))) , 1)
-  }
-}
-
-// create a class that creates more todos
-class Todo {
-
-  constructor(title, description, date, label, priority, projectId) {
-    this.title = title;
-    this.description = description
-    this.date = format(new Date(date), "dd/MM/yyyy")
-    this.label = label
-    this.priority = priority
-    this.id = crypto.randomUUID()
-    this.project = findProject(projectId.name)
-    this.projectId = projectId
-    this.completed = false
-  }
-
-  editTitle(newTitle) {
-    this.title = newTitle
-  }
-  editDescription(newDescription) {
-    this.description = newDescription
-  }
-  editDate(newDate) {
-    this.date = format(new Date(newDate), "dd/MM/yyyy")
-  }
-  editLabel(newLabel) {
-    this.label = newLabel
-  }
-  editPriority(newPriority) {
-    this.priority = newPriority
-  }
-  toggleCompleted() {
-    this.completed = !this.completed
-  }
-}
-
+App()
 
 
 // create todos and projects
