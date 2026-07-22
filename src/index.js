@@ -1,8 +1,5 @@
 import { format } from "date-fns"
 
-// create an array that will be the default project for todos
-const projects = []
-
 
 // create a class that creates more projects
 class Project {
@@ -58,14 +55,9 @@ class Todo {
 }
 
 
-// Generate the default project folder
-addProject("default")
 
 // create todos and projects
 
-function addProject(name) {
-  projects.push(new Project(name.toLowerCase()))
-}
 
 function addTodo(title, description, date, label, priority, projectId) {
 
@@ -73,18 +65,12 @@ function addTodo(title, description, date, label, priority, projectId) {
 }
 
 // delete projects and todos
-function removeProject(projectId) {
-  return projects.splice(projects.indexOf(findProject(projectId)), 1)
-}
 
 function removeTodo(projectId, todoId) {
   return findTodo(todoId, projectId).removeTodo(todoId)
 }
 
 // find specific todos and projects
-function findProject(projectId) {
-  return projects.find((project) => project.id === projectId)
-}
 
 function findTodo(todoId, projectId) {
   return findProject(projectId).todos.find((todo) => todo.id === todoId)
