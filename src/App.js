@@ -1,14 +1,10 @@
-function App() {
+import Project from "./modules/Project.js"
 
-  // create an array that will be the default project for todos
-  const projects = []
+// create an array that will be the default project for todos
+const projects = []
 
-
-  // Generate the default project folder
-  addProject("default")
-
-  return projects
-}
+// Generate the default project folder
+addProject("default")
 
 // Functions
 function addProject(name) {
@@ -33,4 +29,9 @@ function getTodos() {
   return allTodos
 }
 
-export default App
+// testing
+//
+addProject("new project")
+console.log(projects)
+
+export { projects, addProject, removeProject, findProject, getTodos }
