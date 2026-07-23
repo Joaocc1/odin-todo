@@ -33,5 +33,10 @@ function getTodos() {
 //
 addProject("new project")
 console.log(projects)
+const getProject = findProject(1)
+getProject.addTodo("test", "this is a test", "01 08 2026", "testing", 1)
+
+const allTodos = getTodos()
+console.log(allTodos)
 
 export { projects, addProject, removeProject, findProject, getTodos }

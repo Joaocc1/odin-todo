@@ -6,7 +6,8 @@ export default class Project {
   constructor(name) {
     this.name = name
     this.todos = []
-    this.id = crypto.randomUUID()
+    // this.id = crypto.randomUUID()
+    this.id = 1
   }
 
   editName(newName) {
