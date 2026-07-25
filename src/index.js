@@ -1,3 +1,4 @@
+import "./styles.css"
 import App, { addProject, addTodo, getProjects, getTodo, getTodos } from "./App.js";
 
 
