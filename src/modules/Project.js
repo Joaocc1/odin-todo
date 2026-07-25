@@ -1,5 +1,3 @@
-import Todo from "./Todo.js"
-
 // create a class that creates more projects
 export default class Project {
 
