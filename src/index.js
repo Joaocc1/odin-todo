@@ -2,7 +2,7 @@ import App, { addProject, addTodo, getProjects, getTodo, getTodos } from "./App.
 
 
 addTodo("test", "this is a test", "01 08 2026", "testing", 1, 1)
-addProject("Dev")
+addProject("Dev", "")
 console.log(getProjects())
 getTodo(1).editTitle("New title")
 console.log(getTodos())

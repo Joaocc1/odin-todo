@@ -6,11 +6,11 @@ const projects = []
 const todos = []
 
 // Generate the default project folder
-addProject("default")
+addProject("default", "")
 
 // Functions
-function addProject(name) {
-  projects.push(new Project(name.toLowerCase()))
+function addProject(name, description) {
+  projects.push(new Project(name.toLowerCase(), description))
 }
 
 function addTodo(title, description, date, label, priority, projectId) {
