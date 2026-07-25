@@ -9,7 +9,8 @@ export default class Todo {
     this.date = format(new Date(date), "dd/MM/yyyy")
     this.label = label
     this.priority = priority
-    this.id = crypto.randomUUID()
+    // this.id = crypto.randomUUID()
+    this.id = 1
     this.projectId = projectId
     this.completed = false
   }
@@ -28,6 +29,9 @@ export default class Todo {
   }
   editPriority(newPriority) {
     this.priority = newPriority
+  }
+  editProjectId(newProjectId) {
+    this.projectId = newProjectId
   }
   toggleCompleted() {
     this.completed = !this.completed

@@ -5,7 +5,6 @@ export default class Project {
 
   constructor(name) {
     this.name = name
-    this.todos = []
     // this.id = crypto.randomUUID()
     this.id = 1
   }
@@ -14,15 +13,4 @@ export default class Project {
     this.name = newName
   }
 
-  addTodo(title, description, date, label, priority) {
-   this.todos.push(new Todo(title, description,date, label, priority, this.id))
-  }
-
-  findTodo(todoId) {
-    this.todos.find((todo) => todo.id === todoId)
-  }
-
-  removeTodo(todoId) {
-   this.todos.splice(this.todos.indexOf((this.todos.find((todo) => todo.id === todoId))) , 1)
-  }
 }
