@@ -13,5 +13,8 @@ export default class Project {
   editName(newName) {
     this.name = newName
   }
+  editDescription(newDescription) {
+    this.description = newDescription
+  }
 
 }
