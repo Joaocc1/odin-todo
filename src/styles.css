@@ -44,7 +44,7 @@ body {
 }
 
 .logo {
-  color: var(--clr-primary-variation);
+  color: var(--clr-primary);
   font-family: "Goudy Bookletter 1911";
 }
 
@@ -86,8 +86,8 @@ body {
 }
 
 .add-btn {
-  /*color: var(--clr-primary);*/
-  color: var(--clr-primary-variation);
+  color: var(--clr-primary);
+  /*color: var(--clr-primary-variation);*/
 }
 
 .projects-header {
