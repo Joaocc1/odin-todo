@@ -1,14 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --clr-primary: #F54500;
+  --clr-primary-variation: #ff8a5c;
+  --clr-secondary: #ffb699;
+  --clr-tertiary: #FCEADE;
+  --clr-white: #ffffff;
+  --clr-dark: #474747;
+  --clr-accent: #fadbc7;
+  --clr-accent-2: #25ced1;
+  --clr-gray_hover: rgba(0,0,0,0.1);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
+  color: var(--clr-dark);
+}
+
+body {
+  /*font-family: "Goudy Bookletter 1911";*/
+  font-family: "Noto Sans";
 }
 
 .app {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 300px auto;
   min-height: 100vh;
 }
 
 .sidebar {
-  background-color: #e8ebed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--clr-tertiary);
+  padding: 1rem .75rem;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: var(--clr-primary-variation);
+  font-family: "Goudy Bookletter 1911";
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--clr-gray_hover);
+  }
+}
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--clr-gray_hover);
+  }
+}
+
+.sidebar-btn > div {
+  display: flex;
+  gap: 1ch;
+  align-items: center;
+}
+
+.sidebar-left {
+  padding: .5rem;
+}
+
+.sidebar-right {
+  padding: .5rem;
+}
+
+.add-btn {
+  /*color: var(--clr-primary);*/
+  color: var(--clr-primary-variation);
+}
+
+.projects-header {
+
+  &:hover > .add-project > img {
+    display: block;
+  }
+}
+
+.add-project {
+  padding: .5rem;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--clr-gray_hover);
+  }
+}
+
+.add-project > img {
+  display: none;
+  opacity: .5;
+
+}
+
+.sidebar-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
