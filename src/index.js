@@ -28,12 +28,12 @@ function newElement({type, parent, addClass, text, attributes = []} = {}) {
   parentNode.appendChild(newElement)
 }
 
-import image from "./assets/add.png"
+// import image from "./assets/add.png"
 
-newElement({ type: "div", parent: "#content", addClass: "header" })
-newElement({type: "h1", parent: ".header", text: "Hello World"})
+// newElement({ type: "div", parent: "#content", addClass: "header" })
+// newElement({type: "h1", parent: ".header", text: "Hello World"})
 
-newElement({ type: "img", parent: ".header", attributes: [["src", image]] })
+// newElement({ type: "img", parent: ".header", attributes: [["src", image]] })
 
 // ++++++++++ Next steps +++++++++++++
 //
