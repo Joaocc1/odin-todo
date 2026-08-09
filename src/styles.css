@@ -22,6 +22,132 @@ body {
   font-family: "Noto Sans";
 }
 
+h1,h2,p {
+  margin: 0;
+}
+
+dialog {
+  min-width: 550px;
+  padding: 0;
+  color: var(--clr-dark);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 12px var(--clr-gray_hover);
+
+  & h2 {
+    margin: 0;
+  }
+
+  &::backdrop {
+    background: var(--clr-dark);
+    opacity: .5;
+  }
+}
+
+.dialog-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid var(--clr-gray_hover);
+}
+
+.dialog-close {
+  display: flex;
+  align-items: center;
+  padding: .4rem;
+  border-radius: 5px;
+
+ & img {
+   opacity: .5;
+ }
+
+ & :hover {
+   cursor: pointer;
+   background-color: var(--clr-gray_hover);
+ }
+}
+
+.dialog-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  /*gap: 1rem;*/
+
+  & input {
+    margin: 0;
+    margin-top: 8.5px;
+  }
+}
+
+.dialog-content-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.dialog-content-text {
+  font-family: "Noto Sans";
+  color: var(--clr-dark);
+  margin: 3px;
+  line-height: 1.5;
+  border: none;
+  resize: none;
+  outline: none;
+
+  &.dialog-h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:focus {
+    outline: 1px solid var(--clr-dark);
+    border-radius: 5px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.dialog-content-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--clr-light-gray);
+  padding: 1rem;
+  min-width: 150px
+}
+
+.dialog-content-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo-complete {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 0 0 5px;
+
+  border: 2px solid var(--clr-gray);
+
+  &:hover {
+    border: 2px solid var(--clr-dark);
+  }
+  &:checked {
+    border: 2px solid var(--clr-dark);
+    background: var(--clr-gray_hover);
+  }
+}
+
 .app {
   display: grid;
   grid-template-columns: 300px auto;
@@ -144,24 +270,6 @@ body {
   &:hover {
     background-color: var(--clr-light-gray);
   }
-
-  & input {
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    cursor: pointer;
-
-    border: 2px solid var(--clr-gray);
-
-    &:hover {
-      border: 2px solid var(--clr-dark);
-    }
-    &:checked {
-      border: 2px solid var(--clr-dark);
-      background: var(--clr-gray_hover);
-    }
-  }
 }
 
 .add-todo {
@@ -179,6 +287,4 @@ body {
   &:hover {
     background: var(--clr-tertiary);
   }
-
-
 }

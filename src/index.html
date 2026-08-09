@@ -71,11 +71,11 @@
           <h1>Inbox</h1>
           <div class="todo-list">
             <div class="todo">
-              <input type="radio" autocomplete="off"/>
+              <input class="todo-complete" type="radio" autocomplete="off"/>
               <p class="todo-title">This is a todo</p>
             </div>
             <div class="todo">
-              <input type="radio" autocomplete="off"/>
+              <input class="todo-complete" type="radio" autocomplete="off"/>
               <p class="todo-title">This is another todo</p>
             </div>
           </div>
@@ -84,8 +84,53 @@
             <p>Add todo</p>
           </div>
 
-          <dialog id="show-todo" open>
-            <h1>hello</h1>
+          <button command="show-modal" commandfor="show-todo" >open</button>
+
+          <dialog id="show-todo" >
+            <div class="dialog-container">
+              <div class="dialog-header">
+                <div class="dialog-close" command="close" commandfor="show-todo">
+                  <img src="./assets/close.png" alt="" command="close" commandfor="show-todo">
+                </div>
+              </div>
+              <div class="dialog-content">
+                <div class="dialog-content-main">
+                  <div class="dialog-content-column">
+                    <input class="todo-complete" type="radio" autocomplete="off">
+                  </div>
+                  <div class="dialog-content-column">
+                    <textarea class="hidden" name="" id=""></textarea>
+                    <textarea class="dialog-content-text dialog-h2" name="" id="" rows="1">This is a title</textarea>
+                    <textarea class="dialog-content-text" name="" id="" rows="5">This is a description</textarea>
+                  </div>
+                </div>
+                <div class="dialog-content-aside">
+                  <div class="dialog-aside-item">
+                    <p>Project</p>
+                    <select name="project" id="">
+                      <option value="default" disabled>My Projects</option>
+                      <option value="inbox">Inbox</option>
+                    </select>
+                  </div>
+                  <div class="dialog-aside-item">
+                    <p>Date</p>
+                    <input type="date" min="">
+                  </div>
+                  <div class="dialog-aside-item">
+                    <p>Priority</p>
+                    <select name="priority" id="" autocomplete="off">
+                      <option value="high">High</option>
+                      <option value="medium">Medium</option>
+                      <option value="low">Low</option>
+                      <option value="none" selected>None</option>
+                    </select>
+                  </div>
+                  <div class="dialog-aside-item">
+                    <p>Labels</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </dialog>
 
         </div>
