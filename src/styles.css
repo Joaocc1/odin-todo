@@ -14,14 +14,11 @@
   --clr-gray_hover: rgba(0,0,0,0.1);
 }
 
-* {
+body {
+  /*font-family: "Goudy Bookletter 1911";*/
   box-sizing: border-box;
   margin: 0;
   color: var(--clr-dark);
-}
-
-body {
-  /*font-family: "Goudy Bookletter 1911";*/
   font-family: "Noto Sans";
 }
 
