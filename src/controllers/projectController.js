@@ -1,5 +1,5 @@
 import Project from "../models/Project.js"
-import { projects } from "../data/data.js"
+import { projects, todos } from "../data/data.js"
 
 function addProject(name, description) {
   projects.push(new Project(name.toLowerCase(), description))
@@ -17,4 +17,12 @@ function getProjects() {
   return projects
 }
 
-export {addProject, removeProject, getProject, getProjects}
+function getProjectTodos(projectId) {
+  return todos.map((todo) => {
+    if (todo.projectId === projectId) {
+      return todo
+    }
+  })
+}
+
+export {addProject, removeProject, getProject, getProjects, getProjectTodos}

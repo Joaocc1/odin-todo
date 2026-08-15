@@ -1,16 +1,18 @@
 import "./styles.css"
-import { addProject, getProjects } from "./controllers/projectController.js"
+import { addProject, getProject, getProjects, getProjectTodos } from "./controllers/projectController.js"
 import { addTodo, getTodo, getTodos } from "./controllers/todoController.js"
 
 // create default project
 addProject("default", "This is the default project")
 
 // testing logic
-addTodo("test", "this is a test", "01 08 2026", "testing", 1, 1)
+addTodo("test", "this is a test", "08 01 2026", "testing", 1, 1)
+addTodo("do something", "just do it", "08 31 2026", "testing", 1, 1)
 addProject("Dev", "")
 console.log(getProjects())
 getTodo(1).editTitle("New title")
 console.log(getTodos())
+console.log(getProjectTodos(1))
 
 // ********** testing ui generation *********
 

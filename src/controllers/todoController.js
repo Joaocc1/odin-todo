@@ -17,8 +17,5 @@ function getTodos() {
   return todos
 }
 
-function getProjectTodos(projectId) {
- return todos.map((todo) => todo.projectId === projectId)
-}
 
-export { addTodo, getTodo, removeTodo, getTodos, getProjectTodos }
+export { addTodo, getTodo, removeTodo, getTodos, }

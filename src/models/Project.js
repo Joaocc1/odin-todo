@@ -6,6 +6,7 @@ export default class Project {
     this.description = description
     // this.id = crypto.randomUUID()
     this.id = 1
+    this.todos = []
   }
 
   editName(newName) {
@@ -13,6 +14,10 @@ export default class Project {
   }
   editDescription(newDescription) {
     this.description = newDescription
+  }
+
+  getTodos() {
+    return this.todos
   }
 
 }
