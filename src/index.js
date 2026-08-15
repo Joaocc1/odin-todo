@@ -1,6 +1,5 @@
 import "./styles.css"
-import { addProject, getProject, getProjects, getProjectTodos } from "./controllers/projectController.js"
-import { addTodo, getTodo, getTodos } from "./controllers/todoController.js"
+import { addProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, getTodos } from "./appServices.js"
 
 // create default project
 addProject("default", "This is the default project")
