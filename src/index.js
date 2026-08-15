@@ -1,7 +1,11 @@
 import "./styles.css"
-import App, { addProject, addTodo, getProjects, getTodo, getTodos } from "./App.js";
+import { addProject, getProjects } from "./controllers/projectController.js"
+import { addTodo, getTodo, getTodos } from "./controllers/todoController.js"
 
+// create default project
+addProject("default", "This is the default project")
 
+// testing logic
 addTodo("test", "this is a test", "01 08 2026", "testing", 1, 1)
 addProject("Dev", "")
 console.log(getProjects())
