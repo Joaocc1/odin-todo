@@ -29,7 +29,7 @@ export default class Todo {
   editPriority(newPriority) {
     this.priority = newPriority
   }
-  editProjectId(newProjectId) {
+  moveTodo(newProjectId) {
     this.projectId = newProjectId
   }
   toggleCompleted() {

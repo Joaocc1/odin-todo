@@ -14,6 +14,6 @@ export default function startApp() {
   console.log(getTodos())
   const firstTodoId = getTodos()[0].id
   getTodo(firstTodoId).editTitle("New title")
-  moveTodo(firstTodoId, newProjectId)
+  getTodo(firstTodoId).moveTodo(newProjectId)
   console.log(getTodos())
 }
