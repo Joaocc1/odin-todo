@@ -9,8 +9,7 @@ export default class Todo {
     this.date = format(new Date(date), "dd/MM/yyyy")
     this.label = label
     this.priority = priority
-    // this.id = crypto.randomUUID()
-    this.id = 1
+    this.id = crypto.randomUUID()
     this.projectId = projectId
     this.completed = false
   }

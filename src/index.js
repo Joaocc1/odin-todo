@@ -1,17 +1,7 @@
 import "./styles.css"
-import { addProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, getTodos } from "./appServices.js"
+import startApp from "./appController.js"
 
-// create default project
-addProject("default", "This is the default project")
-
-// testing logic
-addTodo("test", "this is a test", "08 01 2026", "testing", 1, 1)
-addTodo("do something", "just do it", "08 31 2026", "testing", 1, 1)
-addProject("Dev", "")
-console.log(getProjects())
-getTodo(1).editTitle("New title")
-console.log(getTodos())
-console.log(getProjectTodos(1))
+startApp()
 
 // ********** testing ui generation *********
 

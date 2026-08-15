@@ -42,4 +42,8 @@ function getTodos() {
   return todos
 }
 
-export {addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, removeTodo, getTodos }
+function moveTodo(todoId, newProjectId) {
+  return getTodo(todoId).editProjectId(newProjectId)
+}
+
+export { addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, removeTodo, getTodos, moveTodo }
