@@ -7,11 +7,7 @@ import AllTodosIcon from "../assets/all_inclusive.png"
 import AddProjectIcon from "../assets/add.png"
 
 export default function Sidebar() {
-  const app = document.querySelector(".app")
-
-  // Sidebar
-  const sidebar = newElement("div", {id: "sidebar"})
-  app.appendChild(sidebar)
+  const sidebar = document.querySelector("#sidebar")
 
   // Sidebar main
   const sidebarMain = newElement("div", {class: "sidebar-main"})
