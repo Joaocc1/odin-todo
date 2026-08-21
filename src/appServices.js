@@ -1,6 +1,7 @@
 import Project from "./models/Project.js"
 import Todo from "./models/Todo.js"
 import { projects, todos } from "./data/data.js"
+import { add } from "date-fns/fp"
 
 function addProject(name, description) {
   projects.push(new Project(name.toLowerCase(), description))
@@ -42,4 +43,25 @@ function getTodos() {
   return todos
 }
 
-export { addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, removeTodo, getTodos }
+// function to generate html elements
+
+function newElement(tag, attributes = {}, text) {
+ const element = document.createElement(tag)
+
+ for (const [key, value] of Object.entries(attributes)) {
+   if (key === "class") {
+     element.classList.add(value);
+   } else {
+     element.setAttribute(key, value)
+	}
+ }
+
+ if (text && text !== "") {
+    element.textContent = text
+  }
+
+ return element
+
+}
+
+export { addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, removeTodo, getTodos, newElement }

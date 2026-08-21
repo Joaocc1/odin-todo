@@ -1,4 +1,5 @@
 import { addProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, getTodos, moveTodo } from "./appServices.js"
+import Navigation from "./views/Navigation.js"
 
 export default function startApp() {
   // create default project
@@ -16,4 +17,7 @@ export default function startApp() {
   getTodo(firstTodoId).editTitle("New title")
   getTodo(firstTodoId).moveTodo(newProjectId)
   console.log(getTodos())
+
+  // render ui
+  Navigation()
 }

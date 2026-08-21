@@ -8,7 +8,10 @@ startApp()
 function newElement({type, parent, addClass, text, attributes = []} = {}) {
   const parentNode = document.querySelector(parent)
   const newElement = document.createElement(type)
-  newElement.classList.add(addClass)
+
+  if (addClass) {
+    newElement.classList.add(addClass)
+  }
 
   if (text && text !== "") {
     newElement.textContent = text

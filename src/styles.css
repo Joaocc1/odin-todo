@@ -155,7 +155,7 @@ dialog {
   min-height: 100vh;
 }
 
-.sidebar {
+#sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
