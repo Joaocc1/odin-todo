@@ -56,7 +56,7 @@ function newElement(tag, attributes = {}, text) {
 	}
  }
 
- if (text && text !== "") {
+ if (text) {
     element.textContent = text
   }
 
