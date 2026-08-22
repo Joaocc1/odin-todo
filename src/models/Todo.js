@@ -3,11 +3,11 @@ import { format } from "date-fns"
 // create a class that creates more todos
 export default class Todo {
 
-  constructor(title, description, date, label, priority, projectId) {
+  constructor(title, description, date, priority, projectId) {
     this.title = title;
     this.description = description
     this.date = format(new Date(date), "yyyy-MM-dd")
-    this.label = label
+    this.labels = []
     this.priority = priority
     this.id = crypto.randomUUID()
     this.projectId = projectId
@@ -23,8 +23,13 @@ export default class Todo {
   editDate(newDate) {
     this.date = format(new Date(newDate), "dd/MM/yyyy")
   }
-  editLabel(newLabel) {
-    this.label = newLabel
+  addLabel(newLabel) {
+    this.labels.push(newLabel)
+  }
+  removeLabel(labelInput) {
+    this.labels.splice(this.labels.indexOf((this.labels.find((label) => {
+      label === labelInput
+    }))), 1)
   }
   editPriority(newPriority) {
     this.priority = newPriority

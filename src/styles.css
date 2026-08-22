@@ -80,7 +80,7 @@ dialog {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  height: 250px;
+  min-height: 250px;
   /*gap: 1rem;*/
 
   & input {

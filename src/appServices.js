@@ -28,7 +28,12 @@ function getProjectTodos(projectId) {
 }
 
 function addTodo(title, description, date, label, priority, projectId) {
- todos.push(new Todo(title, description,date, label, priority, projectId))
+ const newTodo = new Todo(title, description, date, priority, projectId)
+
+ if (label) newTodo.addLabel(label)
+
+ todos.push(newTodo)
+
 }
 
 function getTodo(todoId) {
