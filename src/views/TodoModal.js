@@ -98,8 +98,8 @@ export default function TodoModal() {
     }
     dateInput.value = ""
     selectPriority.value = ""
-    while (dialogAsideLabels.firstChild) {
-      dialogAsideLabels.removeChild(dialogAsideLabels.lastChild)
+    while (labelsList.firstChild) {
+      labelsList.removeChild(labelsList.lastChild)
     }
   })
 }
