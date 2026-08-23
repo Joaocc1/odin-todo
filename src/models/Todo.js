@@ -7,7 +7,6 @@ export default class Todo {
     this.title = title;
     this.description = description
     this.date = format(new Date(), "yyyy-MM-dd")
-    this.labels = []
     this.priority = priority
     this.id = crypto.randomUUID()
     this.projectId = projectId
@@ -22,14 +21,6 @@ export default class Todo {
   }
   editDate(newDate) {
     this.date = format(new Date(newDate), "yyyy-MM-dd")
-  }
-  addLabel(newLabel) {
-    this.labels.push(newLabel)
-  }
-  removeLabel(labelInput) {
-    this.labels.splice(this.labels.indexOf((this.labels.find((label) => {
-      label === labelInput
-    }))), 1)
   }
   editPriority(newPriority) {
     this.priority = newPriority

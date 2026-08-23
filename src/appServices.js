@@ -1,7 +1,6 @@
 import Project from "./models/Project.js"
 import Todo from "./models/Todo.js"
 import { projects, todos } from "./data/data.js"
-import { add } from "date-fns/fp"
 
 function addProject(name, description) {
   projects.push(new Project(name.toLowerCase(), description))
@@ -27,8 +26,7 @@ function getProjectTodos(projectId) {
   })
 }
 
-function addTodo(title, description, date, label, priority, projectId) {
-
+function addTodo(title, description, date, priority, projectId) {
 
  const newTodo = new Todo(title, description, date, priority, projectId)
 
@@ -36,10 +34,7 @@ function addTodo(title, description, date, label, priority, projectId) {
    newTodo.editDate(date)
   }
 
- if (label) newTodo.addLabel(label)
-
  todos.push(newTodo)
-
 }
 
 function getTodo(todoId) {
@@ -52,12 +47,6 @@ function removeTodo(todoId) {
 
 function getTodos() {
   return todos
-}
-
-function removeLabel(todoId, labelName) {
-  const todo = getTodo(todoId)
-
-  todo.removeLabel(labelName)
 }
 
 // function to generate html elements
@@ -81,4 +70,4 @@ function newElement(tag, attributes = {}, text) {
 
 }
 
-export { addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, removeTodo, getTodos, removeLabel, newElement }
+export { addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, removeTodo, getTodos, newElement }

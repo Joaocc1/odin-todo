@@ -82,13 +82,6 @@ export default function TodoModal() {
   const priorityFour = newElement("option", {value: "4"}, "Very Low")
   selectPriority.append(priorityOne, priorityTwo, priorityThree, priorityFour)
 
-  // Todo Label
-  const dialogAsideLabels = newElement("div", {class: "dialog-aside-item"})
-  dialogContentAside.appendChild(dialogAsideLabels)
-  const labelsTitle = newElement("p", {}, "Labels")
-  dialogAsideLabels.appendChild(labelsTitle)
-  const labelsList = newElement("div", {class: "dialog-aside-labels"})
-  dialogAsideLabels.appendChild(labelsList)
 
   // Clear data on "closing" the modal
   showTodo.addEventListener("close", () => {
@@ -99,8 +92,5 @@ export default function TodoModal() {
     }
     dateInput.value = ""
     selectPriority.value = ""
-    while (labelsList.firstChild) {
-      labelsList.removeChild(labelsList.lastChild)
-    }
   })
 }
