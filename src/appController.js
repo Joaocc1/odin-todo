@@ -1,5 +1,5 @@
 import { addProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, getTodos, moveTodo } from "./appServices.js"
-import Navigation from "./views/Navigation.js"
+import { Inbox, renderPage, Sidebar } from "./views/Navigation.js"
 
 export default function startApp() {
   // create default project
@@ -18,5 +18,6 @@ export default function startApp() {
   // getTodo(firstTodoId).moveTodo(newProjectId)
 
   // render ui
-  Navigation()
+  Sidebar()
+  // renderPage(Inbox)
 }

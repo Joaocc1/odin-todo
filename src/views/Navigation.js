@@ -1,11 +1,13 @@
 import Inbox from "./Inbox.js";
 import Sidebar from "./Sidebar.js";
 
+function renderPage(page) {
+  const content = document.querySelector("#content")
+  const contentContainer = document.querySelector(".content-container")
 
-export default function Navigation() {
+  content.removeChild(contentContainer)
 
-  Sidebar()
-  Inbox()
-
-
+  page()
 }
+
+export { Inbox, Sidebar, renderPage }

@@ -1,7 +1,6 @@
 import { getProjects, getProjectTodos, newElement, } from "../appServices.js"
 import addTodoIcon from "../assets/add_2.png"
 import TodoModal from "./TodoModal.js"
-import closeIcon from "../assets/close.png"
 
 export default function Inbox() {
 
@@ -10,7 +9,10 @@ export default function Inbox() {
   const inboxId = allProjects[0].id
   const inboxTodos = getProjectTodos(inboxId)
 
-  const contentContainer = document.querySelector(".content-container")
+  const content = document.querySelector("#content")
+
+  const contentContainer = newElement("div", {class: "content-container"})
+  content.appendChild(contentContainer)
 
   const inboxHeading = newElement("h1", {}, "Inbox")
   contentContainer.appendChild(inboxHeading)
