@@ -28,7 +28,13 @@ function getProjectTodos(projectId) {
 }
 
 function addTodo(title, description, date, label, priority, projectId) {
+
+
  const newTodo = new Todo(title, description, date, priority, projectId)
+
+ if (date || date !== "") {
+   newTodo.editDate(date)
+  }
 
  if (label) newTodo.addLabel(label)
 
@@ -46,6 +52,12 @@ function removeTodo(todoId) {
 
 function getTodos() {
   return todos
+}
+
+function removeLabel(todoId, labelName) {
+  const todo = getTodo(todoId)
+
+  todo.removeLabel(labelName)
 }
 
 // function to generate html elements
@@ -69,4 +81,4 @@ function newElement(tag, attributes = {}, text) {
 
 }
 
-export { addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, removeTodo, getTodos, newElement }
+export { addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, removeTodo, getTodos, removeLabel, newElement }

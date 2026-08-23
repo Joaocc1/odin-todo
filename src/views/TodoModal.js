@@ -39,6 +39,7 @@ export default function TodoModal() {
   const hiddenTextArea = newElement("textarea", {class: "hidden"})
   dialogContentInfo.appendChild(hiddenTextArea)
   const titleTextArea = newElement("textarea", {class: "dialog-content-text", name: "todo-title", id: "todo-title", rows: "1"})
+  titleTextArea.classList.add("dialog-h2")
   dialogContentInfo.appendChild(titleTextArea)
   const descriptionTextArea = newElement("textarea", {class: "dialog-content-text", name: "todo-description", id: "todo-description", rows: "5"})
   dialogContentInfo.appendChild(descriptionTextArea)

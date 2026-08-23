@@ -6,7 +6,7 @@ export default class Todo {
   constructor(title, description, date, priority, projectId) {
     this.title = title;
     this.description = description
-    this.date = format(new Date(date), "yyyy-MM-dd")
+    this.date = format(new Date(), "yyyy-MM-dd")
     this.labels = []
     this.priority = priority
     this.id = crypto.randomUUID()
@@ -21,7 +21,7 @@ export default class Todo {
     this.description = newDescription
   }
   editDate(newDate) {
-    this.date = format(new Date(newDate), "dd/MM/yyyy")
+    this.date = format(new Date(newDate), "yyyy-MM-dd")
   }
   addLabel(newLabel) {
     this.labels.push(newLabel)

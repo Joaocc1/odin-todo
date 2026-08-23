@@ -1,6 +1,7 @@
-import { getProjects, getProjectTodos, newElement } from "../appServices.js"
+import { getProjects, getProjectTodos, newElement, removeLabel } from "../appServices.js"
 import addTodoIcon from "../assets/add_2.png"
 import TodoModal from "./TodoModal.js"
+import closeIcon from "../assets/close.png"
 
 export default function Inbox() {
 
@@ -55,8 +56,15 @@ export default function Inbox() {
         const todoLabels = todo.labels
         todoLabels.forEach((label) => {
           const labelList = document.querySelector(".dialog-aside-labels")
-          const labelItem = newElement("span", {class: "dialog-label"}, label)
+          const labelItem = newElement("div", {class: "dialog-label"})
           labelList.appendChild(labelItem)
+          const labelText = newElement("span", {}, label)
+          const labelDelBtn = newElement("img", {src: closeIcon, width: "16px", class: "label-del-img"})
+          labelDelBtn.addEventListener("click", (e) => {
+            removeLabel(todo.id, label)
+            labelList.removeChild(e.target.parentNode)
+          })
+          labelItem.append(labelText, labelDelBtn)
 
         })
       }
