@@ -19,5 +19,9 @@ export default function startApp() {
 
   // render ui
   Sidebar()
+  const currentView = ""
+  if (currentView === "") {
+    renderPage(Inbox)
+  }
   // renderPage(Inbox)
 }
