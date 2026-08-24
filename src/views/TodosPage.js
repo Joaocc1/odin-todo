@@ -2,7 +2,7 @@ import { getProjects, getProjectTodos, newElement, } from "../appServices.js"
 import addTodoIcon from "../assets/add_2.png"
 import TodoModal from "./TodoModal.js"
 
-export default function Inbox() {
+export default function TodosPage() {
 
   // Get projects, find the inbox/default and get all todos that belongs to it
   const allProjects = getProjects()

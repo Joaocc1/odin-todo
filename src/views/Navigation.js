@@ -1,4 +1,4 @@
-import Inbox from "./Inbox.js";
+import TodosPage from "./TodosPage.js";
 import Sidebar from "./Sidebar.js";
 
 function renderPage(page) {
@@ -10,4 +10,4 @@ function renderPage(page) {
   page()
 }
 
-export { Inbox, Sidebar, renderPage }
+export { TodosPage, Sidebar, renderPage }

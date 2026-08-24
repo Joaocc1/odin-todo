@@ -5,7 +5,7 @@ import InboxIcon from "../assets/inbox.png"
 import CalendarIcon from "../assets/calendar.png"
 import AllTodosIcon from "../assets/all_inclusive.png"
 import AddProjectIcon from "../assets/add.png"
-import { Inbox, renderPage } from "./Navigation.js";
+import { TodosPage, renderPage } from "./Navigation.js";
 
 export default function Sidebar() {
   const sidebar = document.querySelector("#sidebar")
@@ -45,7 +45,7 @@ export default function Sidebar() {
   sidebarLeftAdd.appendChild(sidebarBtnAddPara)
 
   const sidebarBtnInbox = newElement("div", {class: "sidebar-btn"})
-  sidebarBtnInbox.addEventListener("click", () => renderPage(Inbox))
+  sidebarBtnInbox.addEventListener("click", () => renderPage(TodosPage))
   sidebarTodos.appendChild(sidebarBtnInbox)
   const sidebarLeftInbox = newElement("div", {class: "sidebar-left"})
   sidebarBtnInbox.appendChild(sidebarLeftInbox)
