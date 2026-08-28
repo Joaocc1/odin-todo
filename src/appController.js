@@ -1,5 +1,5 @@
 import { addProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, getTodos, moveTodo } from "./appServices.js"
-import { TodosPage, renderPage, Sidebar } from "./views/Navigation.js"
+import { todosPage, renderPage, sidebar } from "./views/navigation.js"
 
 export default function startApp() {
   // create default project
@@ -13,15 +13,16 @@ export default function startApp() {
   addTodo("test", "this is a test", "08 01 2026", 4, defaultId)
   addTodo("do something", "just do it", "08 31 2026", 1, defaultId)
   addTodo("testing no labels", "testing it", "", 2, defaultId)
+  addTodo("testing new project", "testing it", "", 2, newProjectId)
   const firstTodoId = getTodos()[0].id
   getTodo(firstTodoId).editTitle("New title")
   // getTodo(firstTodoId).moveTodo(newProjectId)
 
   // render ui
-  Sidebar()
+  sidebar()
   const currentView = ""
   if (currentView === "") {
-    renderPage(TodosPage)
+    renderPage("inbox", "")
   }
   // renderPage(Inbox)
 }

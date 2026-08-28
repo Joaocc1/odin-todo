@@ -1,27 +1,25 @@
 import { getProjects, getProjectTodos, newElement, } from "../appServices.js"
 import addTodoIcon from "../assets/add_2.png"
-import TodoModal from "./TodoModal.js"
+import todoModal from "./todoModal.js"
 
-export default function TodosPage() {
+export default function todosPage(pageName, filteredTodos) {
 
-  // Get projects, find the inbox/default and get all todos that belongs to it
   const allProjects = getProjects()
-  const inboxId = allProjects[0].id
-  const inboxTodos = getProjectTodos(inboxId)
+  const h1 = pageName
 
   const content = document.querySelector("#content")
 
   const contentContainer = newElement("div", {class: "content-container"})
   content.appendChild(contentContainer)
 
-  const inboxHeading = newElement("h1", {}, "Inbox")
-  contentContainer.appendChild(inboxHeading)
+  const heading = newElement("h1", {}, h1)
+  contentContainer.appendChild(heading)
 
   // Todo list
   const todoList = newElement("div", {class: "todo-list"})
   contentContainer.appendChild(todoList)
 
-  inboxTodos.forEach((todo) => {
+  filteredTodos.forEach((todo) => {
     const todoEntry = newElement("div", {class: "todo", "data-id": todo.id})
     todoList.appendChild(todoEntry)
 
@@ -38,7 +36,7 @@ export default function TodosPage() {
 
       allProjects.forEach((project) => {
         const option = newElement("option", {value: project.id}, project.name)
-        if (project.id === inboxId) {
+        if (project.id === todo.projectId) {
           option.setAttribute("selected", "")
         }
         modalProject.appendChild(option)
@@ -76,6 +74,6 @@ export default function TodosPage() {
   addTodo.appendChild(addTodoPara)
 
   // Load todo modal
-  TodoModal()
+  todoModal()
 
 }

@@ -5,16 +5,18 @@ import InboxIcon from "../assets/inbox.png"
 import CalendarIcon from "../assets/calendar.png"
 import AllTodosIcon from "../assets/all_inclusive.png"
 import AddProjectIcon from "../assets/add.png"
-import { TodosPage, renderPage } from "./Navigation.js";
+import { todosPage, clearPage, renderPage } from "./navigation.js";
 
-export default function Sidebar() {
+export default function sidebar() {
   const sidebar = document.querySelector("#sidebar")
+  const content = document.querySelector("#content")
+  const contentContainer = document.querySelector(".content-container")
 
-  // Sidebar main
+  // sidebar main
   const sidebarMain = newElement("div", {class: "sidebar-main"})
   sidebar.appendChild(sidebarMain)
 
-  // Sidebar Header
+  // sidebar Header
   const sidebarHeader = newElement("div", {class: "sidebar-header"})
   sidebarMain.appendChild(sidebarHeader)
 
@@ -31,7 +33,7 @@ export default function Sidebar() {
   const imgSettings = newElement("img", {src: SettingsIcon, alt: "icon for settings", width: "24px"})
   sidebarHeaderRight.appendChild(imgSettings)
 
-  // Sidebar todos
+  // sidebar todos
   const sidebarTodos = newElement("div", {class: "sidebar-todos"})
   sidebarMain.appendChild(sidebarTodos)
 
@@ -44,8 +46,11 @@ export default function Sidebar() {
   const sidebarBtnAddPara = newElement("p", {class: "add-btn"}, "Add todo")
   sidebarLeftAdd.appendChild(sidebarBtnAddPara)
 
-  const sidebarBtnInbox = newElement("div", {class: "sidebar-btn"})
-  sidebarBtnInbox.addEventListener("click", () => renderPage(TodosPage))
+  const sidebarBtnInbox = newElement("div", {class: "sidebar-btn", id: "inbox"})
+  sidebarBtnInbox.addEventListener("click", () => {
+    clearPage()
+    renderPage("inbox", "")
+  })
   sidebarTodos.appendChild(sidebarBtnInbox)
   const sidebarLeftInbox = newElement("div", {class: "sidebar-left"})
   sidebarBtnInbox.appendChild(sidebarLeftInbox)
@@ -54,7 +59,11 @@ export default function Sidebar() {
   const sidebarBtnInboxPara = newElement("p", {}, "Inbox")
   sidebarLeftInbox.appendChild(sidebarBtnInboxPara)
 
-  const sidebarBtnToday = newElement("div", {class: "sidebar-btn"})
+  const sidebarBtnToday = newElement("div", {class: "sidebar-btn", id: "today"})
+  sidebarBtnToday.addEventListener("click", () => {
+    clearPage()
+    renderPage("today", "")
+  })
   sidebarTodos.appendChild(sidebarBtnToday)
   const sidebarLeftToday = newElement("div", {class: "sidebar-left"})
   sidebarBtnToday.appendChild(sidebarLeftToday)
@@ -63,7 +72,11 @@ export default function Sidebar() {
   const sidebarBtnTodayPara = newElement("p", {}, "Today")
   sidebarLeftToday.appendChild(sidebarBtnTodayPara)
 
-  const sidebarBtnAll = newElement("div", {class: "sidebar-btn"})
+  const sidebarBtnAll = newElement("div", {class: "sidebar-btn", id: "all"})
+  sidebarBtnAll.addEventListener("click", () => {
+    clearPage()
+    renderPage("all", "")
+  })
   sidebarTodos.appendChild(sidebarBtnAll)
   const sidebarLeftAll = newElement("div", {class: "sidebar-left"})
   sidebarBtnAll.appendChild(sidebarLeftAll)
@@ -72,7 +85,7 @@ export default function Sidebar() {
   const sidebarBtnAllPara = newElement("p", {}, "All todos")
   sidebarLeftAll.appendChild(sidebarBtnAllPara)
 
-  // Sidebar projects
+  // sidebar projects
   const sidebarProjects = newElement("div", {class: "projects"})
   sidebarMain.appendChild(sidebarProjects)
 

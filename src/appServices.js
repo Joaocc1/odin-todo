@@ -19,11 +19,7 @@ function getProjects() {
 }
 
 function getProjectTodos(projectId) {
-  return todos.map((todo) => {
-    if (todo.projectId === projectId) {
-      return todo
-    }
-  })
+  return todos.filter((todo) => todo.projectId === projectId)
 }
 
 function addTodo(title, description, date, priority, projectId) {
@@ -39,6 +35,13 @@ function addTodo(title, description, date, priority, projectId) {
 
 function getTodo(todoId) {
   return todos.find((todo) => todo.id === todoId)
+}
+
+function getTodosByDate(date) {
+  const todos = getTodos()
+  const filteredTodos = todos.filter((todo) => todo.date === date)
+
+  return filteredTodos
 }
 
 function removeTodo(todoId) {
@@ -70,4 +73,4 @@ function newElement(tag, attributes = {}, text) {
 
 }
 
-export { addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, removeTodo, getTodos, newElement }
+export { addProject, removeProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, getTodosByDate, removeTodo, getTodos, newElement }
