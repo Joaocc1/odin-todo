@@ -3,9 +3,47 @@ import addTodoIcon from "../assets/add_2.png"
 import addProjectModal from "./addProjectModal.js"
 import todoModal from "./todoModal.js"
 
+function generateModal(todo) {
+	todoModal()
+	const contentContainer = document.querySelector(".content-container")
+	const allProjects = getProjects()
+	const modal = document.querySelector("#show-todo")
+    const modalTitle = document.querySelector("#todo-title")
+    const modalDescription = document.querySelector("#todo-description")
+    const modalProject = document.querySelector("#select-project")
+    const modalDate = document.querySelector("#todo-date")
+    const modalPrio = document.querySelector("#todo-priority")
+
+    modalTitle.textContent = todo.title
+    modalDescription.textContent = todo.description
+
+    allProjects.forEach((project) => {
+    	const option = newElement("option", {value: project.id}, project.name)
+        if (project.id === todo.projectId) {
+          option.setAttribute("selected", "")
+        }
+        modalProject.appendChild(option)
+    })
+
+    console.log(modalProject.value)
+
+    if (todo.date) {
+    	modalDate.value = todo.date
+    }
+
+    if (todo.priority) {
+       modalPrio.value = todo.priority
+    }
+
+    modal.showModal()
+    // remove modal on close
+	modal.addEventListener("close", () => {
+		contentContainer.removeChild(modal);
+    })
+}
+
 export default function todosPage(pageName, filteredTodos) {
 
-  const allProjects = getProjects()
   const h1 = pageName
 
   const content = document.querySelector("#content")
@@ -25,35 +63,7 @@ export default function todosPage(pageName, filteredTodos) {
     todoList.appendChild(todoEntry)
 
     todoEntry.addEventListener("click", () => {
-      const modal = document.querySelector("#show-todo")
-      const modalTitle = document.querySelector("#todo-title")
-      const modalDescription = document.querySelector("#todo-description")
-      const modalProject = document.querySelector("#select-project")
-      const modalDate = document.querySelector("#todo-date")
-      const modalPrio = document.querySelector("#todo-priority")
-
-      modalTitle.textContent = todo.title
-      modalDescription.textContent = todo.description
-
-      allProjects.forEach((project) => {
-        const option = newElement("option", {value: project.id}, project.name)
-        if (project.id === todo.projectId) {
-          option.setAttribute("selected", "")
-        }
-        modalProject.appendChild(option)
-      })
-
-      console.log(modalProject.value)
-
-      if (todo.date) {
-        modalDate.value = todo.date
-      }
-
-      if (todo.priority) {
-       modalPrio.value = todo.priority
-      }
-
-      modal.showModal()
+		generateModal(todo);
     })
 
     const todoStatus = newElement("input", {class: "todo-complete", type: "radio", autocomplete: "off"})
@@ -76,6 +86,5 @@ export default function todosPage(pageName, filteredTodos) {
   addTodo.appendChild(addTodoPara)
 
   // Load todo modal
-  todoModal()
 
 }

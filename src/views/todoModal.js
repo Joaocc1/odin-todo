@@ -81,16 +81,4 @@ export default function todoModal() {
   const priorityThree = newElement("option", {value: "3"}, "Low")
   const priorityFour = newElement("option", {value: "4"}, "Very Low")
   selectPriority.append(priorityOne, priorityTwo, priorityThree, priorityFour)
-
-
-  // Clear data on "closing" the modal
-  showTodo.addEventListener("close", () => {
-    titleTextArea.textContent = ""
-    descriptionTextArea.textContent = ""
-    while (dialogAsideProjectSelect.firstChild) {
-      dialogAsideProjectSelect.removeChild(dialogAsideProjectSelect.lastChild)
-    }
-    dateInput.value = ""
-    selectPriority.value = ""
-  })
 }
