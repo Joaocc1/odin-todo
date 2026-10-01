@@ -3,7 +3,7 @@ import { newElement } from "../appServices.js"
 import closeBtnIcon from "../assets/close.png"
 
 // NOTE: add parameters
-export default function TodoModal() {
+export default function todoModal() {
 
   const contentContainer = document.querySelector(".content-container")
 
@@ -38,10 +38,10 @@ export default function TodoModal() {
   dialogContentMain.appendChild(dialogContentInfo)
   const hiddenTextArea = newElement("textarea", {class: "hidden"})
   dialogContentInfo.appendChild(hiddenTextArea)
-  const titleTextArea = newElement("textarea", {class: "dialog-content-text", name: "todo-title", id: "todo-title", rows: "1"})
+  const titleTextArea = newElement("textarea", {class: "dialog-content-text", name: "todo-title", id: "todo-title", rows: "1", placeholder: "Write a title here"})
   titleTextArea.classList.add("dialog-h2")
   dialogContentInfo.appendChild(titleTextArea)
-  const descriptionTextArea = newElement("textarea", {class: "dialog-content-text", name: "todo-description", id: "todo-description", rows: "5"})
+  const descriptionTextArea = newElement("textarea", {class: "dialog-content-text", name: "todo-description", id: "todo-description", rows: "5", placeholder: "Write a description here"})
   dialogContentInfo.appendChild(descriptionTextArea)
 
   // Dialog content aside

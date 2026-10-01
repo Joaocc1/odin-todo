@@ -6,6 +6,7 @@ import CalendarIcon from "../assets/calendar.png"
 import AllTodosIcon from "../assets/all_inclusive.png"
 import AddProjectIcon from "../assets/add.png"
 import { todosPage, clearPage, renderPage } from "./navigation.js";
+import addProjectModal from "./addProjectModal.js";
 
 export default function sidebar() {
   const sidebar = document.querySelector("#sidebar")
@@ -95,6 +96,10 @@ export default function sidebar() {
   const sidebarProjectsHeaderPara = newElement("p", {class: "sidebar-left"}, "Projects")
   sidebarProjectsHeader.appendChild(sidebarProjectsHeaderPara)
   const addProjectBtn = newElement("div", {class: "add-project"})
+  addProjectBtn.addEventListener("click", () => {
+    const modal = document.querySelector("#add-project")
+    modal.showModal()
+  })
   sidebarProjectsHeader.appendChild(addProjectBtn)
   const addProjectImg = newElement("img", {src: AddProjectIcon, alt: "icon for add project button"})
   addProjectBtn.appendChild(addProjectImg)

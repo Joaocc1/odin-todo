@@ -1,5 +1,6 @@
 import { getProjects, getProjectTodos, newElement, } from "../appServices.js"
 import addTodoIcon from "../assets/add_2.png"
+import addProjectModal from "./addProjectModal.js"
 import todoModal from "./todoModal.js"
 
 export default function todosPage(pageName, filteredTodos) {
@@ -66,6 +67,7 @@ export default function todosPage(pageName, filteredTodos) {
   const addTodo = newElement("div", {class: "add-todo"})
   contentContainer.appendChild(addTodo)
   addTodo.addEventListener("click", () => {
+	  // add modal
   })
 
   const addTodoImg = newElement("img", {src: addTodoIcon, alt: "icon for add todo button", width: "24px"})

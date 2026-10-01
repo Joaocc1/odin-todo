@@ -1,5 +1,6 @@
 import todosPage from "./todosPage.js";
 import sidebar from "./sidebar.js";
+import addProjectModal from "./addProjectModal.js";
 import { getProject, getProjects, getProjectTodos, getTodos, getTodosByDate } from "../appServices.js";
 import { format } from "date-fns"
 
@@ -46,4 +47,4 @@ function clearPage() {
 
 }
 
-export { todosPage, sidebar, renderPage, clearPage }
+export { todosPage, sidebar, addProjectModal, renderPage, clearPage }
