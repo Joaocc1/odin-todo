@@ -39,6 +39,15 @@ export default function sidebar() {
   sidebarMain.appendChild(sidebarTodos)
 
   const sidebarBtnAdd = newElement("div", {class: "sidebar-btn"})
+  sidebarBtnAdd.addEventListener("click", () => {
+  	addProjectModal()
+    const modal = document.querySelector("#add-project")
+    modal.addEventListener("close", () => {
+		const app = document.querySelector(".app")
+		app.removeChild(modal);
+    })
+    modal.showModal()
+  })
   sidebarTodos.appendChild(sidebarBtnAdd)
   const sidebarLeftAdd = newElement("div", {class: "sidebar-left"})
   sidebarBtnAdd.appendChild(sidebarLeftAdd)
@@ -97,7 +106,12 @@ export default function sidebar() {
   sidebarProjectsHeader.appendChild(sidebarProjectsHeaderPara)
   const addProjectBtn = newElement("div", {class: "add-project"})
   addProjectBtn.addEventListener("click", () => {
+  	addProjectModal()
     const modal = document.querySelector("#add-project")
+    modal.addEventListener("close", () => {
+		const app = document.querySelector(".app")
+		app.removeChild(modal);
+    })
     modal.showModal()
   })
   sidebarProjectsHeader.appendChild(addProjectBtn)

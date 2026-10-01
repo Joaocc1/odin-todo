@@ -19,7 +19,6 @@ export default function startApp() {
   // getTodo(firstTodoId).moveTodo(newProjectId)
 
   // render ui
-  addProjectModal()
   sidebar()
   const currentView = ""
   if (currentView === "") {
