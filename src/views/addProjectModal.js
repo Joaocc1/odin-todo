@@ -1,4 +1,4 @@
-import { newElement } from "../appServices.js"
+import { newElement, addProject } from "../appServices.js"
 import closeBtnIcon from "../assets/close.png"
 
 export default function projectModal() {
@@ -32,10 +32,34 @@ export default function projectModal() {
   dialogContentMain.appendChild(dialogContentInfo)
   const hiddenTextArea = newElement("textarea", {class: "hidden"})
   dialogContentInfo.appendChild(hiddenTextArea)
-  const titleTextArea = newElement("textarea", {class: "dialog-content-text", name: "todo-title", id: "todo-title", rows: "1", placeholder: "Write a title here"})
+  const titleTextArea = newElement("textarea", {class: "dialog-content-text", name: "project-title", id: "project-title", rows: "1", placeholder: "Write a title here"})
   titleTextArea.classList.add("dialog-h2")
   dialogContentInfo.appendChild(titleTextArea)
 	const descriptionTextArea = newElement("textarea", {
-		class: "dialog-content-text", name: "todo-description", id: "todo-description", rows: "5", placeholder: "Write a description here"})
+		class: "dialog-content-text", name: "project-description", id: "project-description", rows: "5", placeholder: "Write a description here"})
   dialogContentInfo.appendChild(descriptionTextArea)
+
+  // Cancel and add buttons
+  const modalButtons = newElement("div", { class: "modal-buttons" })
+  dialogContentInfo.appendChild(modalButtons)
+  const cancelBtn = newElement("button", {class: "cancel-btn", command: "close", commandfor: "show-project"}, "Cancel")
+  cancelBtn.classList.add("modal-btn")
+  cancelBtn.addEventListener("click", () => {
+	  showProject.close();
+  })
+
+  const saveBtn = newElement("button", {class: "save-btn", command: "close", commandfor: "show-project"}, "Save")
+  saveBtn.classList.add("modal-btn")
+  saveBtn.addEventListener("click", () => {
+  	const title = document.querySelector("#project-title")
+   	const description = document.querySelector("#project-description")
+	  if (title !== "") {
+		addProject(title, description)
+    }
+
+	  showProject.close();
+  })
+
+  modalButtons.appendChild(cancelBtn)
+  modalButtons.appendChild(saveBtn)
 }

@@ -44,6 +44,26 @@ export default function todoModal() {
   const descriptionTextArea = newElement("textarea", {class: "dialog-content-text", name: "todo-description", id: "todo-description", rows: "5", placeholder: "Write a description here"})
   dialogContentInfo.appendChild(descriptionTextArea)
 
+
+  // Cancel and add buttons
+  const modalButtons = newElement("div", { class: "modal-buttons" })
+  dialogContentInfo.appendChild(modalButtons)
+  const cancelBtn = newElement("button", {class: "cancel-btn", command: "close", commandfor: "show-todo"}, "Cancel")
+  cancelBtn.classList.add("modal-btn")
+  cancelBtn.addEventListener("click", () => {
+	  showTodo.close();
+  })
+
+  const saveBtn = newElement("button", {class: "save-btn", command: "close", commandfor: "show-todo"}, "Save")
+  saveBtn.classList.add("modal-btn")
+  saveBtn.addEventListener("click", () => {
+	  showTodo.close();
+  })
+
+  modalButtons.appendChild(cancelBtn)
+  modalButtons.appendChild(saveBtn)
+
+
   // Dialog content aside
   const dialogContentAside = newElement("div", {class: "dialog-content-aside"})
   dialogContent.appendChild(dialogContentAside)
