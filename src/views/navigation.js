@@ -1,7 +1,7 @@
 import todosPage from "./todosPage.js";
 import sidebar from "./sidebar.js";
 import addProjectModal from "./addProjectModal.js";
-import { getProject, getProjects, getProjectTodos, getTodos, getTodosByDate } from "../appServices.js";
+import { getProject, getProjects, getProjectTodos, getTodos, getTodosByDate, newElement } from "../appServices.js";
 import { format } from "date-fns"
 
 function renderPage(pageName, dataId) {
@@ -39,6 +39,30 @@ function renderPage(pageName, dataId) {
 
 }
 
+function renderProjectsList() {
+	const projectsList = document.querySelector(".projects-list")
+
+	let child = projectsList.lastElementChild;
+	while (child) {
+		projectsList.removeChild(child);
+		child = projectsList.lastElementChild;
+	}
+
+	for (let i = 1; i < getProjects().length; i++) {
+		const projects = getProjects()
+		const project = newElement("div", {class: "sidebar-btn"})
+		project.addEventListener("click", () => {
+    		clearPage()
+      		renderPage("project", projects[i].id)
+  		})
+  		projectsList.appendChild(project)
+    	const sidebarLeft = newElement("div", {class: "sidebar-left"})
+     	project.appendChild(sidebarLeft)
+        const sidebarBtnPara = newElement("p", {}, projects[i].name)
+        sidebarLeft.appendChild(sidebarBtnPara)
+	}
+}
+
 function clearPage() {
   const content = document.querySelector("#content")
   const contentContainer = document.querySelector(".content-container")
@@ -47,4 +71,4 @@ function clearPage() {
 
 }
 
-export { todosPage, sidebar, addProjectModal, renderPage, clearPage }
+export { todosPage, sidebar, addProjectModal, renderPage, renderProjectsList, clearPage }

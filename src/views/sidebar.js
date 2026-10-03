@@ -1,11 +1,11 @@
-import { newElement } from "../appServices.js";
+import { getProjects, newElement } from "../appServices.js";
 import SettingsIcon from "../assets/settings.png"
 import AddBoxIcon from "../assets/add_box.png"
 import InboxIcon from "../assets/inbox.png"
 import CalendarIcon from "../assets/calendar.png"
 import AllTodosIcon from "../assets/all_inclusive.png"
 import AddProjectIcon from "../assets/add.png"
-import { todosPage, clearPage, renderPage } from "./navigation.js";
+import { todosPage, clearPage, renderPage, renderProjectsList } from "./navigation.js";
 import addProjectModal from "./addProjectModal.js";
 
 export default function sidebar() {
@@ -118,6 +118,9 @@ export default function sidebar() {
   const addProjectImg = newElement("img", {src: AddProjectIcon, alt: "icon for add project button"})
   addProjectBtn.appendChild(addProjectImg)
 
+  const projectsList = newElement("div", {class: "projects-list"})
+  sidebarProjects.appendChild(projectsList)
+  renderProjectsList()
 
   // Footer
   const footer = newElement("div", {class: "footer"})

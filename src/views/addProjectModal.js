@@ -1,5 +1,6 @@
 import { newElement, addProject } from "../appServices.js"
 import closeBtnIcon from "../assets/close.png"
+import { renderProjectsList } from "./navigation.js"
 
 export default function projectModal() {
 
@@ -51,13 +52,13 @@ export default function projectModal() {
   const saveBtn = newElement("button", {class: "save-btn", command: "close", commandfor: "show-project"}, "Save")
   saveBtn.classList.add("modal-btn")
   saveBtn.addEventListener("click", () => {
-  	const title = document.querySelector("#project-title")
-   	const description = document.querySelector("#project-description")
-	  if (title !== "") {
+  	const title = document.querySelector("#project-title").value
+   	const description = document.querySelector("#project-description").value
+	if (title !== "") {
 		addProject(title, description)
     }
-
 	  showProject.close();
+	  renderProjectsList();
   })
 
   modalButtons.appendChild(cancelBtn)
