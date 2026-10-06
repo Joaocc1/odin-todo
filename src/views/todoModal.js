@@ -29,11 +29,6 @@ export default function todoModal() {
   const dialogContentMain = newElement("div", {class: "dialog-content-main"})
   dialogContent.appendChild(dialogContentMain)
 
-  const dialogCompleteBtn = newElement("div", {class: "dialog-content-column"})
-  dialogContentMain.appendChild(dialogCompleteBtn)
-  const dialogCompleteBtnInput = newElement("input", {class: "todo-complete", type: "radio", autocomplete: "off"})
-  dialogCompleteBtn.appendChild(dialogCompleteBtnInput)
-
   const dialogContentInfo = newElement("div", {class: "dialog-content-column"})
   dialogContentMain.appendChild(dialogContentInfo)
   const hiddenTextArea = newElement("textarea", {class: "hidden"})
