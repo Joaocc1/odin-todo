@@ -1,46 +1,6 @@
 import { getProjects, getProjectTodos, newElement, } from "../appServices.js"
 import addTodoIcon from "../assets/add_2.png"
-import addProjectModal from "./addProjectModal.js"
-import todoModal from "./todoModal.js"
-
-function generateModal(todo) {
-	todoModal()
-	const contentContainer = document.querySelector(".content-container")
-	const allProjects = getProjects()
-	const modal = document.querySelector("#show-todo")
-    const modalTitle = document.querySelector("#todo-title")
-    const modalDescription = document.querySelector("#todo-description")
-    const modalProject = document.querySelector("#select-project")
-    const modalDate = document.querySelector("#todo-date")
-    const modalPrio = document.querySelector("#todo-priority")
-
-    modalTitle.textContent = todo.title
-    modalDescription.textContent = todo.description
-
-    allProjects.forEach((project) => {
-    	const option = newElement("option", {value: project.id}, project.name)
-        if (project.id === todo.projectId) {
-          option.setAttribute("selected", "")
-        }
-        modalProject.appendChild(option)
-    })
-
-    console.log(modalProject.value)
-
-    if (todo.date) {
-    	modalDate.value = todo.date
-    }
-
-    if (todo.priority) {
-       modalPrio.value = todo.priority
-    }
-
-    modal.showModal()
-    // remove modal on close
-	modal.addEventListener("close", () => {
-		contentContainer.removeChild(modal);
-    })
-}
+import { generateAddModal, generateModal } from "./navigation.js"
 
 export default function todosPage(pageName, filteredTodos) {
 
@@ -77,14 +37,11 @@ export default function todosPage(pageName, filteredTodos) {
   const addTodo = newElement("div", {class: "add-todo"})
   contentContainer.appendChild(addTodo)
   addTodo.addEventListener("click", () => {
-	  // add modal
+  	generateAddModal()
   })
 
   const addTodoImg = newElement("img", {src: addTodoIcon, alt: "icon for add todo button", width: "24px"})
   addTodo.appendChild(addTodoImg)
   const addTodoPara = newElement("p", {}, "Add todo")
   addTodo.appendChild(addTodoPara)
-
-  // Load todo modal
-
 }

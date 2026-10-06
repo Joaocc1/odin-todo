@@ -1,6 +1,7 @@
 import todosPage from "./todosPage.js";
 import sidebar from "./sidebar.js";
 import addProjectModal from "./addProjectModal.js";
+import todoModal from "./todoModal.js";
 import { getProject, getProjects, getProjectTodos, getTodos, getTodosByDate, newElement } from "../appServices.js";
 import { format } from "date-fns"
 
@@ -63,6 +64,62 @@ function renderProjectsList() {
 	}
 }
 
+function generateModal(todo) {
+	todoModal()
+	const contentContainer = document.querySelector(".content-container")
+	const allProjects = getProjects()
+	const modal = document.querySelector("#show-todo")
+    const modalTitle = document.querySelector("#todo-title")
+    const modalDescription = document.querySelector("#todo-description")
+    const modalProject = document.querySelector("#select-project")
+    const modalDate = document.querySelector("#todo-date")
+    const modalPrio = document.querySelector("#todo-priority")
+
+    modalTitle.textContent = todo.title
+    modalDescription.textContent = todo.description
+
+    allProjects.forEach((project) => {
+    	const option = newElement("option", {value: project.id}, project.name)
+        if (project.id === todo.projectId) {
+          option.setAttribute("selected", "")
+        }
+        modalProject.appendChild(option)
+    })
+
+    if (todo.date) {
+    	modalDate.value = todo.date
+    }
+
+    if (todo.priority) {
+       modalPrio.value = todo.priority
+    }
+
+    modal.showModal()
+    // remove modal on close
+	modal.addEventListener("close", () => {
+		contentContainer.removeChild(modal);
+    })
+}
+
+function generateAddModal() {
+	todoModal()
+	const contentContainer = document.querySelector(".content-container")
+	const allProjects = getProjects()
+	const modal = document.querySelector("#show-todo")
+    const modalProject = document.querySelector("#select-project")
+
+    allProjects.forEach((project) => {
+    	const option = newElement("option", {value: project.id}, project.name)
+        modalProject.appendChild(option)
+    })
+
+    modal.showModal()
+    // remove modal on close
+	modal.addEventListener("close", () => {
+		contentContainer.removeChild(modal);
+    })
+}
+
 function clearPage() {
   const content = document.querySelector("#content")
   const contentContainer = document.querySelector(".content-container")
@@ -71,4 +128,4 @@ function clearPage() {
 
 }
 
-export { todosPage, sidebar, addProjectModal, renderPage, renderProjectsList, clearPage }
+export { todosPage, sidebar, addProjectModal, renderPage, renderProjectsList, generateModal, generateAddModal, clearPage }
