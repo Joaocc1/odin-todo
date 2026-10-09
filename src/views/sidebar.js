@@ -5,7 +5,7 @@ import InboxIcon from "../assets/inbox.png"
 import CalendarIcon from "../assets/calendar.png"
 import AllTodosIcon from "../assets/all_inclusive.png"
 import AddProjectIcon from "../assets/add.png"
-import { todosPage, clearPage, renderPage, renderProjectsList } from "./navigation.js";
+import { todosPage, clearPage, renderPage, renderProjectsList, generateAddModal } from "./navigation.js";
 import addProjectModal from "./addProjectModal.js";
 import todoModal from "./todoModal.js";
 
@@ -41,13 +41,7 @@ export default function sidebar() {
 
   const sidebarBtnAdd = newElement("div", {class: "sidebar-btn"})
   sidebarBtnAdd.addEventListener("click", () => {
-  	todoModal()
-    const modal = document.querySelector("#show-todo")
-    modal.addEventListener("close", () => {
-		const parent = document.querySelector(".content-container")
-		parent.removeChild(modal);
-    })
-    modal.showModal()
+  		generateAddModal()
   })
   sidebarTodos.appendChild(sidebarBtnAdd)
   const sidebarLeftAdd = newElement("div", {class: "sidebar-left"})
