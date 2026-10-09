@@ -1,5 +1,5 @@
 import { addProject, getProject, getProjects, getProjectTodos, addTodo, getTodo, getTodos, moveTodo } from "./appServices.js"
-import { todosPage, addProjectModal, renderPage, sidebar } from "./views/navigation.js"
+import { todosPage, addProjectModal, renderPage, sidebar, getCurrentPage } from "./views/navigation.js"
 
 export default function startApp() {
   // create default project
@@ -24,5 +24,4 @@ export default function startApp() {
   if (currentView === "") {
     renderPage("inbox", "")
   }
-  // renderPage(Inbox)
 }

@@ -2,8 +2,11 @@ import todosPage from "./todosPage.js";
 import sidebar from "./sidebar.js";
 import addProjectModal from "./addProjectModal.js";
 import todoModal from "./todoModal.js";
-import { getProject, getProjects, getProjectTodos, getTodos, getTodosByDate, newElement } from "../appServices.js";
+import { addTodo, getProject, getProjects, getProjectTodos, getTodo, getTodos, getTodosByDate, newElement } from "../appServices.js";
 import { format } from "date-fns"
+
+let currentPage = "";
+
 
 function renderPage(pageName, dataId) {
 
@@ -12,32 +15,31 @@ function renderPage(pageName, dataId) {
   if (pageName === "project") {
     const projectName = getProject(dataId).name
     filteredTodos = getProjectTodos(dataId)
-
     todosPage(projectName, filteredTodos)
-
   } else {
 
     switch (pageName) {
       case "inbox":
         filteredTodos = getProjectTodos(getProjects()[0].id)
         todosPage("Inbox", filteredTodos)
+        setCurrentPage("inbox")
         break;
       case "today":
         const dateToday = format(new Date(), "yyyy-MM-dd")
         filteredTodos = getTodosByDate(dateToday)
         todosPage("Today", filteredTodos)
+        setCurrentPage("today")
         break;
       case "all":
         filteredTodos = getTodos()
         todosPage("All Todos", filteredTodos)
+        setCurrentPage("all")
         break;
       default:
         console.log("There was an error")
         break;
     }
-
   }
-
 }
 
 function renderProjectsList() {
@@ -75,6 +77,7 @@ function generateModal(todo) {
     const modalDate = document.querySelector("#todo-date")
     const modalPrio = document.querySelector("#todo-priority")
 
+    modal.setAttribute("data-id", todo.id)
     modalTitle.textContent = todo.title
     modalDescription.textContent = todo.description
 
@@ -120,6 +123,31 @@ function generateAddModal() {
     })
 }
 
+function addTodoHandle(dataId, title, description, project, date, priority) {
+	const currentPage = getCurrentPage()
+
+	if (dataId !== "") {
+		const todoId = dataId;
+		const todo = getTodo(todoId);
+		if (title || title !== "") { todo.editTitle(title) }
+		if (description || description !== "") { todo.editDescription(description) }
+		if (description || description !== "") { todo.editDescription(description) }
+		if (project || project !== "") { todo.moveTodo(project) }
+		if (date || date !== "") { todo.editDate(date) }
+		if (priority || priority !== "") { todo.editPriority(priority) }
+	} else {
+		addTodo(title, description, date, priority, project)
+	}
+
+	if (currentPage === "inbox" || currentPage === "today" || currentPage === "all") {
+		clearPage();
+		renderPage(currentPage, "")
+	} else {
+		clearPage();
+		renderPage("", currentPage)
+	}
+}
+
 function clearPage() {
   const content = document.querySelector("#content")
   const contentContainer = document.querySelector(".content-container")
@@ -128,4 +156,12 @@ function clearPage() {
 
 }
 
-export { todosPage, sidebar, addProjectModal, renderPage, renderProjectsList, generateModal, generateAddModal, clearPage }
+function setCurrentPage(page) {
+	currentPage = page;
+}
+
+function getCurrentPage() {
+	return currentPage;
+}
+
+export { todosPage, sidebar, addProjectModal, renderPage, renderProjectsList, generateModal, generateAddModal, addTodoHandle, clearPage, setCurrentPage, getCurrentPage }

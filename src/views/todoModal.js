@@ -1,13 +1,14 @@
 import { format } from "date-fns"
 import { newElement } from "../appServices.js"
 import closeBtnIcon from "../assets/close.png"
+import { addTodoHandle } from "./navigation.js"
 
 // NOTE: add parameters
 export default function todoModal() {
 
   const contentContainer = document.querySelector(".content-container")
 
-  const showTodo = newElement("dialog", {id: "show-todo"})
+  const showTodo = newElement("dialog", {id: "show-todo", "data-id": ""})
   contentContainer.appendChild(showTodo)
 
   const dialogContainer = newElement("div", {class: "dialog-container"})
@@ -52,7 +53,14 @@ export default function todoModal() {
   const saveBtn = newElement("button", {class: "save-btn", command: "close", commandfor: "show-todo"}, "Save")
   saveBtn.classList.add("modal-btn")
   saveBtn.addEventListener("click", () => {
-	  showTodo.close();
+	 const dataId = showTodo.getAttribute("data-id");
+	  const title = titleTextArea.value;
+	  const description = descriptionTextArea.value;
+	  const project = dialogAsideProjectSelect.value;
+	  const date = dateInput.value;
+	  const priority = selectPriority.value;
+	 addTodoHandle(dataId, title, description, project, date, priority);
+	 showTodo.close();
   })
 
   modalButtons.appendChild(cancelBtn)
