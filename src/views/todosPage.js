@@ -1,6 +1,6 @@
 import { getProjects, getProjectTodos, newElement, } from "../appServices.js"
 import addTodoIcon from "../assets/add_2.png"
-import { generateAddModal, generateModal } from "./navigation.js"
+import { completeTodo, generateAddModal, generateModal } from "./navigation.js"
 
 export default function todosPage(pageName, filteredTodos) {
 
@@ -22,11 +22,16 @@ export default function todosPage(pageName, filteredTodos) {
     const todoEntry = newElement("div", {class: "todo", "data-id": todo.id})
     todoList.appendChild(todoEntry)
 
-    todoEntry.addEventListener("click", () => {
-		generateModal(todo);
+	todoEntry.addEventListener("click", (e) => {
+		if (e.target !== todoStatus) {
+			generateModal(todo);
+		}
     })
 
     const todoStatus = newElement("input", {class: "todo-complete", type: "radio", autocomplete: "off"})
+	todoStatus.addEventListener("click", () => {
+		completeTodo(todo)
+    })
     todoEntry.appendChild(todoStatus)
     const todoTitle = newElement("p", {class: "todo-title"}, todo.title)
     todoEntry.appendChild(todoTitle)

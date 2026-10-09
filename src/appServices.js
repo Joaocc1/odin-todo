@@ -19,7 +19,8 @@ function getProjects() {
 }
 
 function getProjectTodos(projectId) {
-  return todos.filter((todo) => todo.projectId === projectId)
+	const filteredTodos = getTodos()
+  	return filteredTodos.filter((todo) => todo.projectId === projectId)
 }
 
 function addTodo(title, description, date, priority, projectId) {
@@ -49,7 +50,8 @@ function removeTodo(todoId) {
 }
 
 function getTodos() {
-  return todos
+	const filteredTodos = todos.filter((todo) => todo.completed === false)
+  return filteredTodos
 }
 
 // function to generate html elements

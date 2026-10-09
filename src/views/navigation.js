@@ -148,6 +148,19 @@ function addTodoHandle(dataId, title, description, project, date, priority) {
 	}
 }
 
+function completeTodo(todo) {
+	const currentPage = getCurrentPage()
+	todo.toggleCompleted()
+
+	if (currentPage === "inbox" || currentPage === "today" || currentPage === "all") {
+		clearPage();
+		renderPage(currentPage, "")
+	} else {
+		clearPage();
+		renderPage("", currentPage)
+	}
+}
+
 function clearPage() {
   const content = document.querySelector("#content")
   const contentContainer = document.querySelector(".content-container")
@@ -164,4 +177,4 @@ function getCurrentPage() {
 	return currentPage;
 }
 
-export { todosPage, sidebar, addProjectModal, renderPage, renderProjectsList, generateModal, generateAddModal, addTodoHandle, clearPage, setCurrentPage, getCurrentPage }
+export { todosPage, sidebar, addProjectModal, renderPage, renderProjectsList, generateModal, generateAddModal, addTodoHandle, completeTodo, clearPage, setCurrentPage, getCurrentPage }
