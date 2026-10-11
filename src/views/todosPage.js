@@ -1,5 +1,7 @@
 import { getProjects, getProjectTodos, newElement, } from "../appServices.js"
 import addTodoIcon from "../assets/add_2.png"
+import editIcon from "../assets/edit.png"
+import delIcon from "../assets/delete.png"
 import { completeTodo, generateAddModal, generateModal } from "./navigation.js"
 
 export default function todosPage(pageName, filteredTodos) {
@@ -28,14 +30,35 @@ export default function todosPage(pageName, filteredTodos) {
 		}
     })
 
+	const todoLeft = newElement("div", {class: "todo-left"})
+	todoEntry.appendChild(todoLeft)
+
     const todoStatus = newElement("input", {class: "todo-complete", type: "radio", autocomplete: "off"})
 	todoStatus.addEventListener("click", () => {
 		completeTodo(todo)
     })
-    todoEntry.appendChild(todoStatus)
-    const todoTitle = newElement("p", {class: "todo-title"}, todo.title)
-    todoEntry.appendChild(todoTitle)
+    todoLeft.appendChild(todoStatus)
 
+    const todoTitle = newElement("p", {class: "todo-title"}, todo.title)
+    todoLeft.appendChild(todoTitle)
+
+    const todoRight = newElement("div", {class: "todo-right"})
+    todoEntry.appendChild(todoRight)
+
+    const todoEdit = newElement("div", {class: "todo-edit"})
+    todoEdit.classList.add("todo-editing")
+    todoRight.appendChild(todoEdit)
+    const editImg = newElement("img", {src: editIcon, alt: "icon to edit todo"})
+    todoEdit.appendChild(editImg)
+
+	const todoDelete = newElement("div", {class: "todo-delete"})
+	todoDelete.classList.add("todo-editing")
+	todoDelete.addEventListener("click", () => {
+
+	})
+	todoRight.appendChild(todoDelete)
+	const deleteImg = newElement("img", {src: delIcon, alt: "icon to delete todo"})
+	todoDelete.appendChild(deleteImg)
   })
 
   // Add todo

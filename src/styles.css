@@ -289,7 +289,7 @@ dialog {
 .todo {
   display: flex;
   align-items: center;
-  padding: .5rem 0;
+  justify-content: space-between;
   gap: .75rem;
   border-bottom: 1px solid var(--clr-gray_hover);
   cursor: pointer;
@@ -297,6 +297,34 @@ dialog {
   &:hover {
     background-color: var(--clr-light-gray);
   }
+
+  &:hover > .todo-right > .todo-editing > img {
+  	display: block;
+  }
+}
+
+.todo-left, .todo-right {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+}
+
+.todo-title {
+	padding: .5rem 0;
+}
+
+.todo-editing {
+	padding: .4rem;
+	border-radius: 5px;
+
+	&:hover {
+		background-color: var(--clr-gray_hover);
+	}
+}
+
+.todo-editing > img {
+	display: none;
+	opacity: .5;
 }
 
 .add-todo {
